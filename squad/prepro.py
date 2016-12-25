@@ -222,9 +222,17 @@ def prepro_each(args, data_type, start_ratio=0.0, stop_ratio=1.0, out_name="defa
                 break
 
     word2vec_dict = get_word2vec(args, word_counter)
+    #word_counter 
+    #   88/100 of word vocab have corresponding vectors in /home/ruil/data/glove/glove.6B.100d.txt
+    #   Counter({'the': 80, 'of': 43, 'a': 35, '.': 35, 'is': 33, ',': 30, '': 25, 'and': 20, 'in': 18, ...
+    #word2vect_dict
+    #   {'which': [0.03024, 0.44606, 0.43166, -0.37528, 0.29068, 0.23032, 0.18125, 0.40201, 0.13518, -0.19562, 0.30639, -0.13239,... 
     lower_word2vec_dict = get_word2vec(args, lower_word_counter)
-
-    # add context here
+    #lower_word_counter
+    #   88/90 of word vocab have corresponding vectors in /home/ruil/data/glove/glove.6B.100d.txt
+    #   Counter({'the': 81, 'of': 43, 'a': 35, '.': 35, 'is': 33, ',': 30, '': 25, 'main': 22, 'and': 20, 'in': 18, ...
+    #lower_word2vec_dict
+    #   {'that': [-0.093337, 0.19043, 0.68457, -0.41548, -0.22777, -0.11803, -0.095434, 0.19613, 0.17785, -0.020244, ...
     data = {'q': q, 'cq': cq, 'y': y, '*x': rx, '*cx': rcx, 'cy': cy,
             'idxs': idxs, 'ids': ids, 'answerss': answerss, '*p': rx}
     shared = {'x': x, 'cx': cx, 'p': p,
