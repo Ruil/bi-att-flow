@@ -201,15 +201,23 @@ def prepro_each(args, data_type, start_ratio=0.0, stop_ratio=1.0, out_name="defa
                         char_counter[qijk] += 1
 
                 q.append(qi)
+                # Question word level: ['To', 'whom', 'did', 'the', 'Virgin', 'Mary', 'allegedly', 'appear', 'in', '1858', 'in', 'Lourdes', 'France', '?']
                 cq.append(cqi)
+                # Question char level: [['T', 'o'], ['w', 'h', 'o', 'm'], ['d', 'i', 'd'], ['t', 'h', 'e'], ['V', 'i', 'r', 'g', 'i', 'n'], ['M', 'a', 'r', 'y'], ['a', 'l', 'l', 'e', 'g', 'e', 'd', 'l', 'y'], ['a', 'p', 'p', 'e', 'a', 'r'], ['i', 'n'], ['1', '8', '5', '8'], ['i', 'n'], ['L', 'o', 'u', 'r', 'd', 'e', 's'], ['F', 'r', 'a', 'n', 'c', 'e'], ['?']]
                 y.append(yi)
+                # sentence idx, answer start/end idx:[[(0, 108), (0, 111)]] 
                 cy.append(cyi)
+                # char start/end offset [[0, 8]]
                 rx.append(rxi)
+                # artical index, paragraph index [0, 0]
                 rcx.append(rxi)
+                # [0, 0]
                 ids.append(qa['id'])
+                # id: 5733be284776f41900661182
                 idxs.append(len(idxs))
+                # 1 
                 answerss.append(answers)
-
+                # ['Saint Bernadette Soubirous']
             if args.debug:
                 break
 
