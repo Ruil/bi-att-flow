@@ -90,6 +90,7 @@ class Model(object):
                     # examples: http://stackoverflow.com/questions/37897934/tensorflow-embedding-lookup
                     Acx = tf.nn.embedding_lookup(char_emb_mat, self.cx)  # [N, M, JX, W, dc]
                     Acq = tf.nn.embedding_lookup(char_emb_mat, self.cq)  # [N, JQ, W, dc]
+                    # specify any shape that you want as long as the number of elements stays the same: https://www.tensorflow.org/api_docs/python/array_ops/shapes_and_shaping#reshape
                     Acx = tf.reshape(Acx, [-1, JX, W, dc])
                     Acq = tf.reshape(Acq, [-1, JQ, W, dc])
 
