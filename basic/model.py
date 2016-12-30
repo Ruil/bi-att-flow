@@ -35,6 +35,7 @@ class Model(object):
             config.max_ques_size, config.word_vocab_size, config.char_vocab_size, config.max_word_size
         self.x = tf.placeholder('int32', [N, None, None], name='x')
         # A placeholder is simply a variable that we will assign data to at a later date. N: batch_size, W: max_word_size
+        # Example: http://learningtensorflow.com/lesson4/
         self.cx = tf.placeholder('int32', [N, None, None, W], name='cx')
         self.x_mask = tf.placeholder('bool', [N, None, None], name='x_mask')
         self.q = tf.placeholder('int32', [N, None], name='q')
@@ -86,6 +87,7 @@ class Model(object):
 
                 with tf.variable_scope("char"):
                     # embedding_lookup function retrieves rows of the params tensor. 
+                    # examples: http://stackoverflow.com/questions/37897934/tensorflow-embedding-lookup
                     Acx = tf.nn.embedding_lookup(char_emb_mat, self.cx)  # [N, M, JX, W, dc]
                     Acq = tf.nn.embedding_lookup(char_emb_mat, self.cq)  # [N, JQ, W, dc]
                     Acx = tf.reshape(Acx, [-1, JX, W, dc])
