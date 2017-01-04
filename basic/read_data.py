@@ -169,9 +169,15 @@ def read_data(config, data_type, ref, data_filter=None):
     else:
         mask = []
         keys = data.keys()
+        #dict_keys(['cq', '*x', 'pos_q', 'answerss', 'y', 'cy', '*cx', 'ids', 'q', '*p', 'idxs'])
         values = data.values()
         for vals in zip(*values):
             each = {key: val for key, val in zip(keys, vals)}
+            print(vals)
+            #([['T', 'o'], ['w', 'h', 'o', 'm'], ['d', 'i', 'd'], ['t', 'h', 'e'], ['V', 'i', 'r', 'g', 'i', 'n'], ['M', 'a', 'r', 'y'], ['a', 'l', 'l', 'e', 'g', 'e', 'd', 'l', 'y'], ['a', 'p', 'p', 'e', 'a', 'r'], ['i', 'n'], ['1', '8', '5', '8'], ['i', 'n'], ['L', 'o', 'u', 'r', 'd', 'e', 's'], ['F', 'r', 'a', 'n', 'c', 'e'], ['?']], 
+            #[0, 0], [0, 0], 0, 
+            #['To', 'whom', 'did', 'the', 'Virgin', 'Mary', 'allegedly', 'appear', 'in', '1858', 'in', 'Lourdes', 'France', '?'], 
+            #'5733be284776f41900661182', [0, 0], [[[0, 103], [0, 106]]], [[0, 8]], ['Saint Bernadette Soubirous'])
             mask.append(data_filter(each, shared))
         valid_idxs = [idx for idx in range(len(mask)) if mask[idx]]
 
