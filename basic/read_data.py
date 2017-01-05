@@ -198,6 +198,8 @@ def read_data(config, data_type, ref, data_filter=None):
             shared['word2idx'] = {word: idx + 2 for idx, word in
                                   enumerate(word for word, count in word_counter.items()
                                             if count > config.word_count_th and word not in word2vec_dict)}
+            #size of word2idx: 1221
+            #size of word2vec_dict: 70714
         shared['char2idx'] = {char: idx + 2 for idx, char in
                               enumerate(char for char, count in char_counter.items()
                                         if count > config.char_count_th)}
@@ -221,6 +223,7 @@ def read_data(config, data_type, ref, data_filter=None):
         offset = len(shared['word2idx'])
         word2vec_dict = shared['lower_word2vec'] if config.lower_word else shared['word2vec']
         new_word2idx_dict = shared['new_word2idx']
+        #size of new_word2idx: 35477
         idx2vec_dict = {idx: word2vec_dict[word] for word, idx in new_word2idx_dict.items()}
         # print("{}/{} unique words have corresponding glove vectors.".format(len(idx2vec_dict), len(word2idx_dict)))
         new_emb_mat = np.array([idx2vec_dict[idx] for idx in range(len(idx2vec_dict))], dtype='float32')
